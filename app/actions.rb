@@ -1,13 +1,13 @@
-def humanized_time_ago(time_ago_in_minutes)
-  if time_ago_in_minutes >= 60
-    "#{time_ago_in_minutes / 60} hours ago"
+def humanized_time_ago(minute_num)
+  if minute_num >= 60
+    "#{minute_num / 60} hours ago"
   else
-    "#{time_ago_in_minutes} minutes ago"
+    "#{minute_num} minutes ago"
   end
 end
 
-get "/" do
-  finstagram_post_shark = {
+get '/' do
+  @finstagram_post_shark = {
     username: "sharky_j",
     avatar_url: "https://live.staticflickr.com/65535/52358606250_01c667c5da_w.jpg",
     photo_url: "https://live.staticflickr.com/65535/52358421508_786aa10e2c_c.jpg",
@@ -16,11 +16,11 @@ get "/" do
     comment_count: 1,
     comments: [{
       username: "sharky_j",
-      text: "Out for the long weekend... too embarrassed to show y'all the beach bod!",
-    }],
+      text: "Out for the long weekend... too embarrassed to show y'all the beach bod!"
+    }]
   }
 
-  finstagram_post_whale = {
+  @finstagram_post_whale = {
     username: "kirk_whalum",
     avatar_url: "https://live.staticflickr.com/65535/52358421348_f34c7996b1.jpg",
     photo_url: "https://live.staticflickr.com/65535/52357237337_1cc718f6a7_4k.jpg",
@@ -29,11 +29,11 @@ get "/" do
     comment_count: 1,
     comments: [{
       username: "kirk_whalum",
-      text: "#weekendvibes",
-    }],
+      text: "#weekendvibes"
+    }]
   }
 
-  finstagram_post_marlin = {
+  @finstagram_post_marlin = {
     username: "marlin_peppa",
     avatar_url: "https://live.staticflickr.com/65535/52358415933_0a0e6bc35f_3k.jpg",
     photo_url: "https://live.staticflickr.com/65535/52358494794_f88b160d15_4k.jpg",
@@ -42,9 +42,11 @@ get "/" do
     comment_count: 1,
     comments: [{
       username: "marlin_peppa",
-      text: "lunchtime! ;)",
-    }],
+      text: "lunchtime! ;)"
+    }]
   }
 
-  [finstagram_post_shark, finstagram_post_whale, finstagram_post_marlin].to_s
+  @finstagram_posts = [@finstagram_post_shark, @finstagram_post_whale, @finstagram_post_marlin]
+
+  erb(:index)
 end
