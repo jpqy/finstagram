@@ -48,3 +48,9 @@ get "/" do
 
   [finstagram_post_shark, finstagram_post_whale, finstagram_post_marlin].to_s
 end
+
+get "/pizza" do
+  @toppings = ["Pepperoni", "Pineapple", "Sausage", "Anchovies", "Red Peppers", "Feta", "Onions"]
+
+  erb(:pizza)
+end
