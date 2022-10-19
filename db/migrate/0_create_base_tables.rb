@@ -6,18 +6,18 @@ class CreateBaseTables < ActiveRecord::Migration
       t.string :avatar_url
       t.string :email
       t.string :password
-      t.timestamps
+      t.timestamps # Creates two columns: created_at, updated_at as datetime data type
     end
 
     create_table :finstagram_posts do |t|
-      t.references :user
+      t.references :user # Creates a user_id column, integer data type
       t.string :photo_url
       t.timestamps
     end
 
     create_table :comments do |t|
-      t.references :user
-      t.references :finstagram_post
+      t.references :user # Makes a user_id column
+      t.references :finstagram_post # Makes a finstagram_post_id column
       t.text :text
       t.timestamps
     end
