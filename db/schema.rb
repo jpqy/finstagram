@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 1) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "finstagram_post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pokemons", force: :cascade do |t|
+    t.string  "name"
+    t.string  "pokemon_type"
+    t.integer "pokedex_number"
+    t.integer "trainer_id"
+  end
+
+  create_table "trainers", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
