@@ -1,0 +1,17 @@
+<header>
+  <h1>Trainers</h1>
+</header>
+<main role="main">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+    </tr>
+    <% @trainers.each do |trainer| %>
+      <tr>
+        <td><%= trainer.name %></td>
+        <td><img src="<%= trainer.image_url %>"></td>
+      </tr>
+    <% end %>
+  </table>
+</main>

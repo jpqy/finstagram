@@ -28,3 +28,15 @@ a.photo:hover {
   padding: 10px;
   transition: padding 0.5s;
 }
+
+table {
+  margin: auto;
+}
+
+th, td {
+  padding: 20px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
