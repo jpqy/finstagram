@@ -48,3 +48,21 @@ post '/trainers' do
     "Trainer is invalid"
   end
 end
+
+get '/pick_fav_pokemon' do
+  erb(:fav_pokemon_form)
+end
+
+post '/fav_pokemon' do
+  fav_pokemon_from_form = params[:fav_pokemon]
+  session[:fav_pokemon] = fav_pokemon_from_form
+
+  "Fav pokemon set to #{fav_pokemon}"
+end
+
+helpers do
+  def fav_pokemon
+    session[:fav_pokemon]
+  end
+end
+
