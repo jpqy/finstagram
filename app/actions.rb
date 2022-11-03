@@ -49,6 +49,21 @@ post '/trainers' do
   end
 end
 
+post '/pokemons' do
+  new_pokemon = Pokemon.new(
+    name: params["pokemon_name"],
+    image_url: params["image_url"],
+    pokedex_number: params["pokedex_number"],
+    trainer_id: params["trainer_id"],
+    pokemon_type: params["pokemon_type"],
+    )
+  if new_pokemon.save
+    redirect "/pokemons"
+  else
+    "pokemon is invalid"
+  end
+end
+
 get '/pick_fav_pokemon' do
   erb(:fav_pokemon_form)
 end
@@ -114,6 +129,21 @@ helpers do
   def fav_pokemon
     session[:fav_pokemon]
   end
+
+  def current_trainer
+    Trainer.find_by(id: session[:trainer_id])
+  end
+end
+
+before '/pokemons/new' do
+  if current_trainer.blank?
+    redirect to("/trainer_login")
+  end
+end
+
+get '/pokemons/new' do
+  @pokemon = Pokemon.new
+  erb(:"pokemons/new")
 end
 
 get "/pokemons/:id" do
@@ -126,4 +156,35 @@ get "/trainers/:id" do
   @trainer = Trainer.find(params[:id])
 
   erb(:"trainers/show")
+end
+
+get '/trainer_login' do    # when a GET request comes into /login
+  erb(:trainer_login)      # render app/views/trainer_login.erb
+end
+
+post '/trainer_login' do
+  trainer_name = params[:trainer_name]
+
+  trainer = Trainer.find_by(name: trainer_name)  
+
+  if trainer.present?
+    session[:trainer_id] = trainer.id
+    redirect to('/pokemons')
+  else
+    @error_message = "Login failed."
+    erb(:trainer_login)
+  end
+end
+
+delete "/pokemons/:id" do
+  pokemon = Pokemon.find(params[:id])
+
+  # Check to see if pokemon is owned by the currently logged in trainer
+  if current_trainer.present? && current_trainer == pokemon.trainer
+    pokemon.destroy!
+  else
+    halt(401, "You are unauthorized")
+  end
+
+  redirect to('/pokemons')
 end

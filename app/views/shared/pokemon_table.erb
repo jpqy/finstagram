@@ -7,6 +7,7 @@
     <% if show_weakness_column %>
       <th>Weaknesses</th>
     <% end %>
+    <th>Set free</th>
   </tr>
   <% pokemons.each do |pokemon| %>
     <tr>
@@ -17,6 +18,12 @@
       <% if show_weakness_column %>
         <td><%= pokemon.weakness_type %></td>
       <% end %>
+      <td>
+        <form method="POST" action="/pokemons/<%=pokemon.id%>">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit">Set free</button>
+        </form>
+      </td>
     </tr>
   <% end %>
 </table>

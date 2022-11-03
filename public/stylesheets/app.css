@@ -44,3 +44,19 @@ table, th, td {
 .trainer-pic {
   width: 200px;
 }
+
+@media (max-width: 900px) {
+  main, table {
+    width: 100%;
+  }
+}
+
+@media (max-width: 724px) {
+  table {
+    font-size: xx-small;
+  }
+
+  img {
+    width: 50px;
+  }
+}

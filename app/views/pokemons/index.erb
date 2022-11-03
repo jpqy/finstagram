@@ -2,10 +2,9 @@
   <h1>Pokemons</h1>
 </header>
 <main role="main">
-  <% if fav_pokemon.present? %>
-    <p>Your favourite pokemon is <%= fav_pokemon %></p>
-  <% else %>
-    <p>Please set your favourite pokemon <a href="/pick_fav_pokemon">here</a></p>
+  <% if current_trainer.present? %>
+    <p>Welcome back, <%= current_trainer.name %></p>
+    <p>Add a new pokemon <a href="/pokemons/new">here!</a></p>
   <% end %>
   <%= erb(:"shared/pokemon_table", locals: {pokemons: @pokemons, show_weakness_column: true})%>
 </main>

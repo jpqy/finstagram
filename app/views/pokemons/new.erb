@@ -1,0 +1,17 @@
+<header>
+  <h1>Add a pokemon for <%= current_trainer.name %></h1>
+</header>
+<main role="main">
+  <form method="POST" action="/pokemons">
+    <label for="pokemon-name">Pokemon Name</label>
+    <input type="text" id="pokemon-name" name="pokemon_name">
+    <label for="pokemon_type">Pokemon Type</label>
+    <input type="text" id="pokemon_type" name="pokemon_type">
+    <label for="pokedex-number">Pokedex Number</label>
+    <input type="text" id="pokedex-number" name="pokedex_number">
+    <label for="image-url">Image URL</label>
+    <input type="hidden" name="trainer_id" value=<%= current_trainer.id %>>
+    <input type="text" name="image_url" id="image-url">
+    <button type="submit">Submit pokemon data</button>
+  </form>
+</main>
