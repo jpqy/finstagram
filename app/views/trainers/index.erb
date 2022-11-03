@@ -4,11 +4,13 @@
 <main role="main">
   <table>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Image</th>
     </tr>
     <% @trainers.each do |trainer| %>
       <tr>
+        <td><a href=<%= "/trainers/#{trainer.id}" %>><%= trainer.id %></a></td>
         <td><%= trainer.name %></td>
         <td><img src="<%= trainer.image_url %>" class ="trainer-pic"></td>
       </tr>

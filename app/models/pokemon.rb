@@ -6,7 +6,7 @@ class Pokemon < ActiveRecord::Base
       "Ground"
     elsif pokemon_type == "Water"
       "Electric"
-    elsif pokemon_type == "Fire"
+    elsif pokemon_type == "Fire" || pokemon_type == "Rock"
       "Water"
     end
   end

@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Pokedex Number</th>
+    <% if show_weakness_column %>
+      <th>Weaknesses</th>
+    <% end %>
+  </tr>
+  <% pokemons.each do |pokemon| %>
+    <tr>
+      <td><a href=<%= "/pokemons/#{pokemon.id}" %>><%= pokemon.id %></a></td>
+      <td><%= pokemon.name %></td>
+      <td><img src="<%= pokemon.image_url %>"></td>
+      <td><%= pokemon.pokedex_number %></td>
+      <% if show_weakness_column %>
+        <td><%= pokemon.weakness_type %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

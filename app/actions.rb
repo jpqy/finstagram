@@ -93,3 +93,15 @@ helpers do
     session[:fav_pokemon]
   end
 end
+
+get "/pokemons/:id" do
+  @pokemon = Pokemon.find(params[:id])
+
+  erb(:"pokemons/show")
+end
+
+get "/trainers/:id" do
+  @trainer = Trainer.find(params[:id])
+
+  erb(:"trainers/show")
+end

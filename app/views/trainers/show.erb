@@ -1,0 +1,19 @@
+<header>
+  <h1><%= @trainer.name %></h1>
+</header>
+<main role="main">
+  <h2>Trainer info</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+    </tr>
+    <tr>
+      <td><%= @trainer.name %></td>
+      <td><img src="<%= @trainer.image_url %>" class ="trainer-pic"></td>
+    </tr>
+  </table>
+
+  <h2><%= "#{@trainer.name}'s Pokemons"%></h2>
+  <%= erb(:"shared/pokemon_table", locals: {pokemons: @trainer.pokemons, show_weakness_column: false})%>
+</main>

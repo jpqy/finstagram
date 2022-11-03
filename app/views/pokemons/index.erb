@@ -2,23 +2,10 @@
   <h1>Pokemons</h1>
 </header>
 <main role="main">
-  <p>Your favourite pokemon is <%= fav_pokemon %></p>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Pokedex Number</th>
-      <th>Type</th>
-    </tr>
-    <% @pokemons.each do |pokemon| %>
-      <tr>
-        <td><%= pokemon.name %></td>
-        <td><img src="<%= pokemon.image_url %>"></td>
-        <td><%= pokemon.pokedex_number %></td>
-        <td><%= pokemon.pokemon_type %></td>
-      </tr>
-    <% end %>
-  </table>
-
-  <p>Your favourite pokemon is <%= fav_pokemon %></p>
+  <% if fav_pokemon.present? %>
+    <p>Your favourite pokemon is <%= fav_pokemon %></p>
+  <% else %>
+    <p>Please set your favourite pokemon <a href="/pick_fav_pokemon">here</a></p>
+  <% end %>
+  <%= erb(:"shared/pokemon_table", locals: {pokemons: @pokemons, show_weakness_column: true})%>
 </main>
