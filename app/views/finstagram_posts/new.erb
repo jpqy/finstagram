@@ -15,3 +15,21 @@
     <button class="button" type="submit">Post</button>
   </div>
 </form>
+
+<img id="preview" style="display: none; max-width: 200px" src="">
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+    $(document).ready(function() { // Wait for page to finish loading before running the following
+        $("#photo_url").on("blur", function(event) { // Any time the text box loses focus, run the following
+            var photo_url = $(this).val(); // Save the contents of the text box to a
+            var preview = $("#preview");
+            if (photo_url) {
+                preview.attr("src", photo_url)
+                preview.show();
+            } else {
+                preview.hide();
+            }
+        });
+    });
+</script>

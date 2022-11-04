@@ -8,7 +8,11 @@
     <form action="/likes/<%= like.id %>" method="POST">
       <input name="_method" type="hidden" value="delete">
       <button class="button user-like" type="submit">
-        <%= finstagram_post.like_count %> likes
+        <% if finstagram_post.like_count == 1 %>
+          1 like
+        <% else %>
+          <%= finstagram_post.like_count %> likes
+        <% end %>
       </button>
     </form>
 
