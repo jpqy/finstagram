@@ -22,7 +22,7 @@
 <script>
     $(document).ready(function() { // Wait for page to finish loading before running the following
         $("#photo_url").on("blur", function(event) { // Any time the text box loses focus, run the following
-            var photo_url = $(this).val(); // Save the contents of the text box to a
+            var photo_url = $(this).val(); // Save the contents of the text box to a variable
             var preview = $("#preview");
             if (photo_url) {
                 preview.attr("src", photo_url)
